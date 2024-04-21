@@ -16,7 +16,7 @@ public class Respuesta {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idrespuesta;
+    private Integer idrespuesta;
 
     @Column(nullable = false, length = 30)
     private String descripcion;
@@ -25,8 +25,9 @@ public class Respuesta {
     @JoinColumn(name = "idPregunta", nullable = false)
     private Pregunta objPregunta;
 
-    @OneToOne
-    @JoinColumn(name = "idDocente")
+    @ManyToOne
+    @JoinColumn(name = "idDocente", nullable = false)
     private Docente objDocente;
+
 
 }

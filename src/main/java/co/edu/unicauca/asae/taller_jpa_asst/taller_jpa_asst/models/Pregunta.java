@@ -4,6 +4,7 @@ package co.edu.unicauca.asae.taller_jpa_asst.taller_jpa_asst.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -17,7 +18,7 @@ public class Pregunta {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idpregunta;
+    private Integer idpregunta;
 
     @Column(nullable = false, length = 30)
     private String enunciado;
@@ -25,11 +26,13 @@ public class Pregunta {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "objPregunta")
 	private List<Respuesta> respuestas;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "objPregunta")
+    @OneToOne
+    @JoinColumn(name="idtippregunta")
     private TipoPregunta objTipoPregunta;
 
     @ManyToOne
     @JoinColumn(name = "idCuestionario", nullable = false)
     private Cuestionario objCuestionario;
+
 
 }

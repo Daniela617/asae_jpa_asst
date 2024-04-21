@@ -15,7 +15,7 @@ public class TipoPregunta {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idtippregunta;
+    private Integer idtippregunta;
 
     @Column(nullable = false, length = 30)
     private String nombre;
@@ -23,8 +23,7 @@ public class TipoPregunta {
     @Column(nullable = false, length = 30)
     private String descripcion;
 
-    @OneToOne
-    @JoinColumn(name="idPregunta")
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "objTipoPregunta")
     private Pregunta objPregunta;
-
+    
 }

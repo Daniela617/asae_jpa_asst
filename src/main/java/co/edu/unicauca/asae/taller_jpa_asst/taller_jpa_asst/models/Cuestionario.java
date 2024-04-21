@@ -1,9 +1,8 @@
 package co.edu.unicauca.asae.taller_jpa_asst.taller_jpa_asst.models;
 
 import lombok.*;
-
+import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,14 +18,13 @@ import jakarta.persistence.Table;
 @Entity
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "Cuestionarios")
 
 public class Cuestionario {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idcuestionario;
+    private Integer idcuestionario;
 
     @Column( nullable = false, length = 30)
     private String titulo;
@@ -36,5 +34,8 @@ public class Cuestionario {
 
     @OneToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY, mappedBy = "objCuestionario")
     private List<Pregunta> preguntas;
+    public Cuestionario(){
+        this.preguntas = new ArrayList<>();
+    }
 
 }

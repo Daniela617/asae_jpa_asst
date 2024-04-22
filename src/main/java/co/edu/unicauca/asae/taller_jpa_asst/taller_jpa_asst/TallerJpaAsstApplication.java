@@ -71,6 +71,11 @@ public class TallerJpaAsstApplication implements CommandLineRunner{
 		Departamento objDepartamento= new Departamento();
 		objDepartamento = srvDepartamentosBD.findById(1).get();
 		objDocente.getListaDepartamentos().add(objDepartamento);
+		Departamento objDepartamento2= new Departamento();
+		objDepartamento2 = srvDepartamentosBD.findById(2).get();
+		objDocente.getListaDepartamentos().add(objDepartamento2);
+
+		
 		srvDocentesBD.save(objDocente);
 		System.out.println("---------Se agregó el docente 1--------\n");
 
@@ -92,14 +97,42 @@ public class TallerJpaAsstApplication implements CommandLineRunner{
 		objTelefono2.setObjDocente(objDocente2);
 
 		listarDepartamentos();
-		Departamento objDepartamento2= new Departamento();
-		objDepartamento2 = srvDepartamentosBD.findById(2).get();
-		objDocente2.getListaDepartamentos().add(objDepartamento2);
+		Departamento objDepartamento3= new Departamento();
+		objDepartamento3 = srvDepartamentosBD.findById(1).get();
+		objDocente2.getListaDepartamentos().add(objDepartamento3);
+		Departamento objDepartamento4= new Departamento();
+		objDepartamento4 = srvDepartamentosBD.findById(2).get();
+		objDocente2.getListaDepartamentos().add(objDepartamento4);
 		srvDocentesBD.save(objDocente2);
 		System.out.println("---------Se agregó el docente 2--------\n");
 
 		System.out.println("---------------------------------\n");
-		listarDocentes();
+
+		System.out.println("Nombre: %s \n"+ objDocente.getNombres());
+		System.out.println("Apellido: %s \n"+ objDocente.getApellidos());
+		System.out.println("Tipo Identificacion: %s \n"+ objDocente.getTipoidentificacion());
+		System.out.println("Numero Identificacion: %s \n"+ objDocente.getNumeroidentificacion());
+		System.out.println("Correo: %s \n"+ objDocente.getCorreo());
+		System.out.println("Vinculacion: %s \n"+ objDocente.getVinculacion());
+		System.out.println("Tipo telefono: %s \n"+ objDocente.getObjTelefono().getTipotelefono());
+		System.out.println("Numero telefono: %s \n"+ objDocente.getObjTelefono().getNumero());
+		System.out.println("Departamento: %s \n"+ objDocente.getListaDepartamentos().get(0));
+		System.out.println("Departamento: %s \n"+ objDocente.getListaDepartamentos().get(1));
+		
+		System.out.println("---------------------------------\n");
+		System.out.println("---------------------------------\n");
+		
+		System.out.println("Nombre: %s \n"+ objDocente2.getNombres());
+		System.out.println("Apellido: %s \n"+ objDocente2.getApellidos());
+		System.out.println("Tipo Identificacion: %s \n"+ objDocente2.getTipoidentificacion());
+		System.out.println("Numero Identificacion: %s \n"+ objDocente2.getNumeroidentificacion());
+		System.out.println("Correo: %s \n"+ objDocente2.getCorreo());
+		System.out.println("Vinculacion: %s \n"+ objDocente2.getVinculacion());
+		System.out.println("Tipo telefono: %s \n"+ objDocente2.getObjTelefono().getTipotelefono());
+		System.out.println("Numero telefono: %s \n"+ objDocente2.getObjTelefono().getNumero());
+		System.out.println("Departamento: %s \n"+ objDocente2.getListaDepartamentos().get(0));
+		System.out.println("Departamento: %s \n"+ objDocente2.getListaDepartamentos().get(1));
+		
 		System.out.println("---------------------------------\n");
 
 	}

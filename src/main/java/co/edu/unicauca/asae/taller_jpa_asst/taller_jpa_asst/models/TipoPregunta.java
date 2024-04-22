@@ -1,6 +1,9 @@
 package co.edu.unicauca.asae.taller_jpa_asst.taller_jpa_asst.models;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,7 +12,6 @@ import lombok.*;
 @Entity
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "TipoPregunta")
 public class TipoPregunta {
     
@@ -23,7 +25,11 @@ public class TipoPregunta {
     @Column(nullable = false, length = 30)
     private String descripcion;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "objTipoPregunta")
-    private Pregunta objPregunta;
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "objTipoPregunta")
+    private List<Pregunta> listaPregunta;
+
+    public TipoPregunta(){
+        this.listaPregunta = new ArrayList<>();
+    }
     
 }

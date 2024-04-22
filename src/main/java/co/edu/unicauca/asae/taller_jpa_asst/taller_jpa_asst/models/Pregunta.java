@@ -26,8 +26,8 @@ public class Pregunta {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "objPregunta")
 	private List<Respuesta> respuestas;
 
-    @OneToOne
-    @JoinColumn(name="idtippregunta")
+    @ManyToOne
+    @JoinColumn(name="idtippregunta", nullable = false)
     private TipoPregunta objTipoPregunta;
 
     @ManyToOne

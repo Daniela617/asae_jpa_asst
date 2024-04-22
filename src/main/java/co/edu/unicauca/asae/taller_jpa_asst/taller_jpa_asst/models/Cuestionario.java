@@ -32,7 +32,7 @@ public class Cuestionario {
     @Column( nullable = false, length = 30)
     private String descripcion;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.LAZY, mappedBy = "objCuestionario")
+    @OneToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.EAGER, mappedBy = "objCuestionario")
     private List<Pregunta> preguntas;
     public Cuestionario(){
         this.preguntas = new ArrayList<>();

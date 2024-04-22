@@ -23,7 +23,7 @@ public class Docente extends Persona{
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "objDocente")
     private Telefono objTelefono;
 
-    @OneToMany( mappedBy = "objDocente")
+    @OneToMany( mappedBy = "objDocente", fetch = FetchType.EAGER)
     private List<Respuesta> respuestas;
 
     @ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)

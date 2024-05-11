@@ -21,7 +21,7 @@ public class Respuesta {
     @Column(nullable = false, length = 30)
     private String descripcion;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idPregunta", nullable = false)
     private Pregunta objPregunta;
 

@@ -104,34 +104,34 @@ public class TallerJpaAsstApplication implements CommandLineRunner{
 		objDepartamento4 = srvDepartamentosBD.findById(2).get();
 		objDocente2.getListaDepartamentos().add(objDepartamento4);
 		srvDocentesBD.save(objDocente2);
-		/*System.out.println("---------Se agregó el docente 2--------\n");
+		System.out.println("---------Se agregó el docente 2--------\n");
 		
 		System.out.println("---------------------------------\n");
 		
-		System.out.println("Nombre: %s \n"+ objDocente.getNombres());
-		System.out.println("Apellido: %s \n"+ objDocente.getApellidos());
-		System.out.println("Tipo Identificacion: %s \n"+ objDocente.getTipoidentificacion());
-		System.out.println("Numero Identificacion: %s \n"+ objDocente.getNumeroidentificacion());
-		System.out.println("Correo: %s \n"+ objDocente.getCorreo());
-		System.out.println("Vinculacion: %s \n"+ objDocente.getVinculacion());
-		System.out.println("Tipo telefono: %s \n"+ objDocente.getObjTelefono().getTipotelefono());
-		System.out.println("Numero telefono: %s \n"+ objDocente.getObjTelefono().getNumero());
-		System.out.println("Departamento: %s \n"+ objDocente.getListaDepartamentos().get(0));
-		System.out.println("Departamento: %s \n"+ objDocente.getListaDepartamentos().get(1));
+		System.out.println("Nombre: \n"+ objDocente.getNombres());
+		System.out.println("Apellido: \n"+ objDocente.getApellidos());
+		System.out.println("Tipo Identificacion: \n"+ objDocente.getTipoidentificacion());
+		System.out.println("Numero Identificacion:  \n"+ objDocente.getNumeroidentificacion());
+		System.out.println("Correo: \n"+ objDocente.getCorreo());
+		System.out.println("Vinculacion: \n"+ objDocente.getVinculacion());
+		System.out.println("Tipo telefono:  \n"+ objDocente.getObjTelefono().getTipotelefono());
+		System.out.println("Numero telefono: \n"+ objDocente.getObjTelefono().getNumero());
+		System.out.println("Departamento:  \n"+ objDocente.getListaDepartamentos().get(0).getNombre());
+		System.out.println("Departamento: \n"+ objDocente.getListaDepartamentos().get(1).getNombre());
 		
 		System.out.println("---------------------------------\n");
 		System.out.println("---------------------------------\n");
 		
-		System.out.println("Nombre: %s \n"+ objDocente2.getNombres());
-		System.out.println("Apellido: %s \n"+ objDocente2.getApellidos());
-		System.out.println("Tipo Identificacion: %s \n"+ objDocente2.getTipoidentificacion());
-		System.out.println("Numero Identificacion: %s \n"+ objDocente2.getNumeroidentificacion());
-		System.out.println("Correo: %s \n"+ objDocente2.getCorreo());
-		System.out.println("Vinculacion: %s \n"+ objDocente2.getVinculacion());
-		System.out.println("Tipo telefono: %s \n"+ objDocente2.getObjTelefono().getTipotelefono());
-		System.out.println("Numero telefono: %s \n"+ objDocente2.getObjTelefono().getNumero());
-		System.out.println("Departamento: %s \n"+ objDocente2.getListaDepartamentos().get(0));
-		System.out.println("Departamento: %s \n"+ objDocente2.getListaDepartamentos().get(1));*/
+		System.out.println("Nombre:  \n"+ objDocente2.getNombres());
+		System.out.println("Apellido: \n"+ objDocente2.getApellidos());
+		System.out.println("Tipo Identificacion: \n"+ objDocente2.getTipoidentificacion());
+		System.out.println("Numero Identificacion: \n"+ objDocente2.getNumeroidentificacion());
+		System.out.println("Correo: \n"+ objDocente2.getCorreo());
+		System.out.println("Vinculacion: \n"+ objDocente2.getVinculacion());
+		System.out.println("Tipo telefono: \n"+ objDocente2.getObjTelefono().getTipotelefono());
+		System.out.println("Numero telefono: \n"+ objDocente2.getObjTelefono().getNumero());
+		System.out.println("Departamento: \n"+ objDocente2.getListaDepartamentos().get(0).getNombre());
+		System.out.println("Departamento: \n"+ objDocente2.getListaDepartamentos().get(1).getNombre());
 		
 		System.out.println("---------------------------------\n");
 		
@@ -192,7 +192,7 @@ public class TallerJpaAsstApplication implements CommandLineRunner{
 		objCuestionario = srvCuestionariosBD.findById(1).get();
 		//listar preguntas del cuestionario hacer procedimiento
 		listarPreguntasCuestionario(objCuestionario);
-
+		//creo la primera pregunta
 		Pregunta objPregunta = new Pregunta();
 		objPregunta = srvPreguntasBD.findById(objCuestionario.getPreguntas().get(0).getIdpregunta()).get();
 		
@@ -212,6 +212,8 @@ public class TallerJpaAsstApplication implements CommandLineRunner{
 
 			srvRespuestasBD.save(objRespuesta);
 			srvRespuestasBD.save(objRespuesta2);
+		
+		//creo la segunda pregunta
 		
 
 	}
@@ -262,23 +264,24 @@ public class TallerJpaAsstApplication implements CommandLineRunner{
 	private void listarCuestionariosSinPreguntas() {
 		System.out.println("------Listando cuestionarios-------\n");
 		srvCuestionariosBD.findAll().forEach(cuestionario -> {
-			System.out.printf("Id: %d\n Titulo: %s\n Descripcion: %s\n-----------------\n", cuestionario.getIdcuestionario(), cuestionario.getTitulo(), cuestionario.getDescripcion());
+			System.out.printf("Id: %d\nTitulo: %s\nDescripcion: %s\n-----------------\n", cuestionario.getIdcuestionario(), cuestionario.getTitulo(), cuestionario.getDescripcion());
 		});
 	}
 	private void listarPreguntasCuestionario(Cuestionario objCuestionario){
 		System.out.printf("Las preguntas del cuestionario: %s\n", objCuestionario.getTitulo());
 		objCuestionario.getPreguntas().forEach(pregunta -> {
-            System.out.printf("Id: %d\n Enunciado: %s\n Nombre tipo de pregunta: %s\n Descipcion tipo pregunta: %s\n", pregunta.getIdpregunta(), pregunta.getEnunciado(),pregunta.getObjTipoPregunta().getNombre(),pregunta.getObjTipoPregunta().getDescripcion());
+            System.out.printf("IdPregunta: %d\nEnunciado: %s\nNombre tipo de pregunta: %s\nDescipcion tipo pregunta: %s\n", pregunta.getIdpregunta(), pregunta.getEnunciado(),pregunta.getObjTipoPregunta().getNombre(),pregunta.getObjTipoPregunta().getDescripcion());
 			
 			listarRespuestasPregunta(pregunta);
         });
 	}
 	private void listarRespuestasPregunta(Pregunta objPregunta){
+		System.out.printf("-----------------------------------------------------\n");
 		System.out.printf("Respuestas de la pregunta: %s\n", objPregunta.getEnunciado());
 		objPregunta.getRespuestas().forEach(respuesta -> {
-			System.out.printf("IdRespuesta: %d\n Descripcion: %s\n", respuesta.getIdrespuesta(), respuesta.getDescripcion());
-			System.out.printf("Docente:");
-			System.out.printf("IdDocente: %d\n Nombres: %s\n Apellidos: %s\n", respuesta.getObjDocente().getIdpersona(), respuesta.getObjDocente().getNombres(), respuesta.getObjDocente().getApellidos());
+			System.out.printf("IdRespuesta: %d\nDescripcion: %s\n", respuesta.getIdrespuesta(), respuesta.getDescripcion());
+			System.out.printf("Docente:\n");
+			System.out.printf("IdDocente: %d\nNombres: %s\nApellidos: %s\n", respuesta.getObjDocente().getIdpersona(), respuesta.getObjDocente().getNombres(), respuesta.getObjDocente().getApellidos());
 			System.out.printf("-------------------------\n");
 		});
 	}

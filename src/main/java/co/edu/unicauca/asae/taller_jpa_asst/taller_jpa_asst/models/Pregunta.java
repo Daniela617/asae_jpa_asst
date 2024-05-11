@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+
 @Table(name = "Preguntas")
 public class Pregunta {
     
@@ -33,6 +33,8 @@ public class Pregunta {
     @ManyToOne
     @JoinColumn(name = "idCuestionario", nullable = false)
     private Cuestionario objCuestionario;
-
+    public Pregunta (){
+        this.respuestas = new ArrayList<>();
+    }
 
 }
